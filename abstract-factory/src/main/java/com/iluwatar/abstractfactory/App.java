@@ -114,5 +114,12 @@ public class App {
     LOGGER.info(app.getArmy().getDescription());
     LOGGER.info(app.getCastle().getDescription());
     LOGGER.info(app.getKing().getDescription());
+
+    // Verbesserungspotential (Vermeidung von new)
+    LOGGER.info("Elf Kingdom via FactoryProducer");
+    app.createKingdom(KingdomFactoryProducer.getFactory("elf"));
+    LOGGER.info(app.getArmy().getDescription());
+    LOGGER.info(app.getCastle().getDescription());
+    LOGGER.info(app.getKing().getDescription());
   }
 }
