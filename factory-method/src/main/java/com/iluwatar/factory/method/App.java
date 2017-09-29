@@ -43,37 +43,20 @@ public class App {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
-
-  /**
-   *
-   * @todo:
-   *
-   * - entferne diese konkreten Klassen und nutze stattdessen das interface ({@link Blacksmith})
-   * =>  private final Blacksmith blacksmith;
-   */
-  private OrcBlacksmith orcBlacksmith;
-  private ElfBlacksmith elfBlacksmith;
-
-  //private final Blacksmith blacksmith;
-
+  private final Blacksmith blacksmith;
+  
   /**
    * Creates an instance of <code>App</code> which will use <code>blacksmith</code> to manufacture 
    * the weapons for war.
    * <code>App</code> is unaware which concrete implementation of {@link Blacksmith} it is using.
    * The decision of which blacksmith implementation to use may depend on configuration, or
    * the type of rival in war.
+   * @param blacksmith a non-null implementation of blacksmith
    */
-//  public App(Blacksmith blacksmith) {
-//    this.blacksmith = blacksmith;
-//  }
-
-  public App(OrcBlacksmith orcBlacksmith) {
-    this.orcBlacksmith = orcBlacksmith;
+  public App(Blacksmith blacksmith) {
+    this.blacksmith = blacksmith;
   }
-
-  public App(ElfBlacksmith elfBlacksmith) {
-    this.elfBlacksmith = elfBlacksmith;
-  }
+  
   /**
    * Program entry point
    * 
@@ -82,40 +65,18 @@ public class App {
   public static void main(String[] args) {
     // Lets go to war with Orc weapons
     App app = new App(new OrcBlacksmith());
-    app.manufactureWeapons("Orc");
+    app.manufactureWeapons();
     
     // Lets go to war with Elf weapons
     app = new App(new ElfBlacksmith());
-    app.manufactureWeapons("Elf");
+    app.manufactureWeapons();
   }
-
-  /**
-   *
-   * @todo: schreibe die Methode um
-   *
-   * - Entferne parameter
-   * - Nutze die Methode ({@link Blacksmith#manufactureWeapon}) welche im Interface ({@link Blacksmith}) definiert ist
-   *   um ({@link Weapon}) Objekte zu erzeugen anstatt hier die Klassen mit 'new' zu instanziieren
-   *
-   */
-  private void manufactureWeapons(String weaponKind) {
+  
+  private void manufactureWeapons() {
     Weapon weapon;
-
-    if(weaponKind == "Orc") {
-      weapon = new OrcWeapon(WeaponType.SPEAR);
-      LOGGER.info(weapon.toString());
-      weapon = new OrcWeapon(WeaponType.AXE);
-      LOGGER.info(weapon.toString());
-    } else if(weaponKind == "Elf") {
-      weapon = new ElfWeapon(WeaponType.SPEAR);
-      LOGGER.info(weapon.toString());
-      weapon = new ElfWeapon(WeaponType.AXE);
-      LOGGER.info(weapon.toString());
-    }
-  }
-
-  private void manufactureOrcWeapons() {
-    Weapon weapon;
-
+    weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
+    LOGGER.info(weapon.toString());
+    weapon = blacksmith.manufactureWeapon(WeaponType.AXE);
+    LOGGER.info(weapon.toString());
   }
 }
