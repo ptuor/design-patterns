@@ -53,17 +53,17 @@ public class App {
     captainOfBattleShip.fire();
 
     /**
-     * @todo: aktiviere sobald {@link BattleFishingBoat} umgesetzt
+     * Benutzt den objektbasierten Adapter {@link BattleFishingBoat}
      */
-//    Captain captainOfFirstFisherBoat = new Captain(new BattleFishingBoat());
-//    captainOfFirstFisherBoat.move();
-//    captainOfFirstFisherBoat.fire();
+    Captain captainOfFirstFisherBoat = new Captain(new BattleFishingBoat());
+    captainOfFirstFisherBoat.move();
+    captainOfFirstFisherBoat.fire();
 
     /**
-     * @todo: aktiviere sobald {@link RealBattleFishingBoat} umgesetzt
+     * Benutzt den klassenbasierten Adapter {@link RealBattleFishingBoat}
      */
-//    Captain captainOfSecondFisherBoat = new Captain(new RealBattleFishingBoat());
-//    captainOfSecondFisherBoat.move();
-//    captainOfSecondFisherBoat.fire();
+    Captain captainOfSecondFisherBoat = new Captain(new RealBattleFishingBoat());
+    captainOfSecondFisherBoat.move();
+    captainOfSecondFisherBoat.fire();
   }
 }
