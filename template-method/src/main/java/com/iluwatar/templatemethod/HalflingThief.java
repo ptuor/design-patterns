@@ -32,11 +32,11 @@ public class HalflingThief {
   private StealingMethod method;
 
   public HalflingThief(StealingMethod method) {
-    //@todo: implement
+    this.method = method;
   }
 
   public void steal() {
-    //@todo: implement
+    method.steal();
   }
 
   public void changeMethod(StealingMethod method) {
