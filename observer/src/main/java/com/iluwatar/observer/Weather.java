@@ -29,13 +29,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ *
  * Weather can be observed by implementing {@link WeatherObserver} interface and registering as
  * listener.
  *
- *
- * Die Klasse ist das Subject und enthält bereits Methoden zum Hinzufügen und Entfernen von Observern ({@link WeatherObserver})
- * @todo: es fehlt allerdings noch die Funktionalität um Observer über Änderungen zu benachrichten, füge diese hinzu
  */
 public class Weather {
 
@@ -64,9 +61,12 @@ public class Weather {
     WeatherType[] enumValues = WeatherType.values();
     currentWeather = enumValues[(currentWeather.ordinal() + 1) % enumValues.length];
     LOGGER.info("The weather changed to {}.", currentWeather);
+    notifyObservers();
   }
 
-  public WeatherType getCurrentWeather() {
-    return currentWeather;
+  private void notifyObservers() {
+    for (WeatherObserver obs : observers) {
+      obs.update(currentWeather);
+    }
   }
 }
