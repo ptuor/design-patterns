@@ -19,11 +19,11 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="abstract-factory" target="1.8" />
-      <module name="adapter" target="1.5" />
+      <module name="adapter" target="1.8" />
       <module name="builder" target="1.8" />
       <module name="composite" target="1.8" />
       <module name="decorator" target="1.8" />
-      <module name="factory-method" target="1.5" />
+      <module name="factory-method" target="1.8" />
       <module name="java-design-patterns" target="1.8" />
       <module name="observer" target="1.8" />
       <module name="strategy" target="1.8" />
