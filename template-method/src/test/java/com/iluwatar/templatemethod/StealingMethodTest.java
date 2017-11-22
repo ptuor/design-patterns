@@ -54,43 +54,14 @@ public abstract class StealingMethodTest<M extends StealingMethod> {
     appender.stop();
   }
 
-  /**
-   * The tested stealing method
-   */
   private final M method;
-
-  /**
-   * The expected target
-   */
   private final String expectedTarget;
-
-  /**
-   * The expected target picking result
-   */
   private final String expectedTargetResult;
-
-  /**
-   * The expected confusion method
-   */
   private final String expectedConfuseMethod;
-
-  /**
-   * The expected stealing method
-   */
   private final String expectedStealMethod;
 
-  /**
-   * Create a new test for the given stealing method, together with the expected results
-   *
-   * @param method                The tested stealing method
-   * @param expectedTarget        The expected target name
-   * @param expectedTargetResult  The expected target picking result
-   * @param expectedConfuseMethod The expected confusion method
-   * @param expectedStealMethod   The expected stealing method
-   */
   public StealingMethodTest(final M method, String expectedTarget, final String expectedTargetResult,
                             final String expectedConfuseMethod, final String expectedStealMethod) {
-
     this.method = method;
     this.expectedTarget = expectedTarget;
     this.expectedTargetResult = expectedTargetResult;
@@ -98,41 +69,6 @@ public abstract class StealingMethodTest<M extends StealingMethod> {
     this.expectedStealMethod = expectedStealMethod;
   }
 
-  /**
-   * Verify if the thief picks the correct target
-   */
-  @Test
-  public void testPickTarget() {
-    assertEquals(expectedTarget, this.method.pickTarget());
-  }
-
-  /**
-   * Verify if the target confusing step goes as planned
-   */
-  @Test
-  public void testConfuseTarget() {
-    assertEquals(0, appender.getLogSize());
-
-    this.method.confuseTarget(this.expectedTarget);
-    assertEquals(this.expectedConfuseMethod, appender.getLastMessage());
-    assertEquals(1, appender.getLogSize());
-  }
-
-  /**
-   * Verify if the stealing step goes as planned
-   */
-  @Test
-  public void testStealTheItem() {
-    assertEquals(0, appender.getLogSize());
-
-    this.method.stealTheItem(this.expectedTarget);
-    assertEquals(this.expectedStealMethod, appender.getLastMessage());
-    assertEquals(1, appender.getLogSize());
-  }
-
-  /**
-   * Verify if the complete steal process goes as planned
-   */
   @Test
   public void testSteal() {
     this.method.steal();
