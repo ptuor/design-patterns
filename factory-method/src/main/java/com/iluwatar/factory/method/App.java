@@ -1,17 +1,17 @@
 /**
  * The MIT License
  * Copyright (c) 2014-2016 Ilkka Seppälä
- *
+ * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * <p>
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -43,14 +43,7 @@ public class App {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
-    /**
-     *
-     * @todo:
-     *
-     * - entferne "type" und nutze stattdessen das interface ({@link Blacksmith})
-     * =>  private final Blacksmith blacksmith;
-     */
-    private String type;
+    private final Blacksmith blacksmith;
 
     /**
      * Creates an instance of <code>App</code> which will use <code>blacksmith</code> to manufacture
@@ -60,47 +53,25 @@ public class App {
      * the type of rival in war.
      */
 
-    /**
-     * todo: nutze hier {@link Blacksmith}
-     */
-    public App(String type) {
-        this.type = type;
+    public App(Blacksmith blacksmith) {
+        this.blacksmith = blacksmith;
     }
 
-    /**
-     * todo: nutze neuen Konstruktor
-     */
     public static void main(String[] args) {
         // Lets go to war with Orc weapons
-        App app = new App("Orc");
+        App app = new App(new OrcBlacksmith());
         app.manufactureWeapons();
 
         // Lets go to war with Elf weapons
-        app = new App("Elf");
+        app = new App(new ElfBlacksmith());
         app.manufactureWeapons();
     }
 
-    /**
-     *
-     * @todo: schreibe die Methode um
-     *
-     * - Nutze die Methode ({@link Blacksmith#manufactureWeapon}) welche im Interface ({@link Blacksmith}) definiert ist
-     *   um ({@link Weapon}) Objekte zu erzeugen anstatt hier die Klassen mit 'new' zu instanziieren
-     *
-     */
     private void manufactureWeapons() {
         Weapon weapon;
-
-        if (type == "Orc") {
-            weapon = new OrcWeapon(WeaponType.SPEAR);
-            LOGGER.info(weapon.toString());
-            weapon = new OrcWeapon(WeaponType.AXE);
-            LOGGER.info(weapon.toString());
-        } else if (type == "Elf") {
-            weapon = new ElfWeapon(WeaponType.SPEAR);
-            LOGGER.info(weapon.toString());
-            weapon = new ElfWeapon(WeaponType.AXE);
-            LOGGER.info(weapon.toString());
-        }
+        weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
+        LOGGER.info(weapon.toString());
+        weapon = blacksmith.manufactureWeapon(WeaponType.AXE);
+        LOGGER.info(weapon.toString());
     }
 }
