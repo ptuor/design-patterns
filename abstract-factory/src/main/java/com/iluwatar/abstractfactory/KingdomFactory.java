@@ -29,7 +29,7 @@ package com.iluwatar.abstractfactory;
  */
 
 /*
-    flexiblere Variante ohne konkrete Factorys wäre mittels Parameter möglich und als abstract class:
+    flexiblere Variante ohne konkrete Factories wäre mittels Parameter möglich und als abstract class:
     Castle createCastle(String type) {
       if(type === "ork") {
         return new OrkCastle()
