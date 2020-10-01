@@ -8,6 +8,6 @@ public class KingdomFactoryProducer {
         } else if(type.equalsIgnoreCase("orc")) {
             return new OrcKingdomFactory();
         }
-        return null; // better throw error;)
+        throw new IllegalArgumentException("type \"" + type + "\" not valid");
     }
 }
