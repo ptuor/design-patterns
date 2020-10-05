@@ -36,7 +36,8 @@ public class Messenger {
   LetterComposite messageFromOrcs() {
 
     List<Word> words = new ArrayList<>();
-
+    Letter letter = new Letter('S');
+//    letter.add(new Word(Arrays.asList(letter))); //  compile error
     words.add(new Word(Arrays.asList(new Letter('W'), new Letter('h'), new Letter('e'), new Letter(
         'r'), new Letter('e'))));
     words.add(new Word(Arrays.asList(new Letter('t'), new Letter('h'), new Letter('e'), new Letter(

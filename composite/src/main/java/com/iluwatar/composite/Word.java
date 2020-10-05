@@ -40,6 +40,10 @@ public class Word extends LetterComposite {
     }
   }
 
+  public void add(LetterComposite letter) {
+    getChildren().add(letter);
+  }
+
   @Override
   protected void printThisBefore() {
     System.out.print(" ");

@@ -40,6 +40,10 @@ public class Sentence extends LetterComposite {
     }
   }
 
+  public void add(LetterComposite letter) {
+    getChildren().add(letter);
+  }
+
   @Override
   protected void printThisBefore() {
     // nop
