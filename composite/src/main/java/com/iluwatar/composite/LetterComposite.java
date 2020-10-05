@@ -32,22 +32,25 @@ import java.util.List;
  * TIPP: Lasst Euch vom Namen "Composite" nicht verwirren. Die Klasse ({@link LetterComposite} entspricht der "Component" (Diagramm Buch S. 214)
  * Die Klassen ({@link Word} und ({@link Sentence} entsprechen je einem "Composite" (aus dem Diagramm Buch S. 214)
  *
- * @todo: implementiere die für eine Composite-Klasse typischen Methoden
  */
 public abstract class LetterComposite {
 
+  private ArrayList<LetterComposite> children = new ArrayList<>();
+
   public void add(LetterComposite letter) {
+    children.add(letter);
   }
 
   public void remove(LetterComposite letter) {
+    children.remove(letter);
   }
 
   public LetterComposite getChild(int index) {
-    return null;
+    return children.get(index);
   }
 
   public int count() {
-    return 0;
+    return children.size();
   }
 
   protected abstract void printThisBefore();
@@ -61,7 +64,9 @@ public abstract class LetterComposite {
   public void print() {
     printThisBefore();
 
-    // todo: iteriere über childern
+    for(LetterComposite letter : children) {
+      letter.print();
+    }
 
     printThisAfter();
   }
