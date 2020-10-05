@@ -56,6 +56,8 @@ public class Weather {
 
   /**
    * Makes time pass for weather
+   *
+   * Ist gleichzeitig Subject und ConcreteSubject
    */
   public void timePasses() {
     WeatherType[] enumValues = WeatherType.values();
@@ -64,6 +66,11 @@ public class Weather {
     notifyObservers();
   }
 
+  /**
+   * Variante "1": Subject selber ruft notify auf
+   * + Clients {@link App} müssen nicht daran denken
+   * - Jenachdem Kette von updates
+   */
   private void notifyObservers() {
     for (WeatherObserver obs : observers) {
       obs.update(currentWeather);
