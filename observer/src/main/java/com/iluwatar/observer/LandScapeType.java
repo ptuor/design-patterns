@@ -22,39 +22,17 @@
  */
 package com.iluwatar.observer;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 /**
- * Date: 12/27/15 - 12:07 PM
- *
- * @author Jeroen Meulemeester
+ * 
+ * WeatherType enumeration
+ * 
  */
-@RunWith(Parameterized.class)
-public class OrcsTest extends WeatherObserverTest<Orcs> {
+public enum LandScapeType {
 
-  @Parameterized.Parameters
-  public static Collection<Object[]> data() {
-    final List<Object[]> testData = new ArrayList<>();
-    testData.add(new Object[]{WeatherType.SUNNY, "The sun hurts the orcs' eyes."});
-    testData.add(new Object[]{WeatherType.RAINY, "The orcs are dripping wet."});
-    testData.add(new Object[]{WeatherType.WINDY, "The orc smell almost vanishes in the wind."});
-    testData.add(new Object[]{WeatherType.COLD, "The orcs are freezing cold."});
-    return testData;
+  MOUNTAINS, SWAMP, HILLS, LAKE;
+
+  @Override
+  public String toString() {
+    return this.name().toLowerCase();
   }
-
-  /**
-   * Create a new test with the given weather and expected response
-   *
-   * @param weather  The weather that should be unleashed on the observer
-   * @param response The expected response from the observer
-   */
-  public OrcsTest(final Weather weather, final String response) {
-    super(weather, response, Orcs::new);
-  }
-
 }

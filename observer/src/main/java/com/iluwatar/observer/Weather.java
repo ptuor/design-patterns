@@ -29,51 +29,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * Weather can be observed by implementing {@link WeatherObserver} interface and registering as
- * listener.
- *
+ * ConcreteSubject von {@link Condition}
  */
-public class Weather {
+public class Weather extends Condition {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(Weather.class);
 
   private WeatherType currentWeather;
-  private List<WeatherObserver> observers;
 
   public Weather() {
-    observers = new ArrayList<>();
     currentWeather = WeatherType.SUNNY;
   }
 
-  public void addObserver(WeatherObserver obs) {
-    observers.add(obs);
-  }
-
-  public void removeObserver(WeatherObserver obs) {
-    observers.remove(obs);
-  }
-
-  /**
-   * Makes time pass for weather
-   *
-   * Ist gleichzeitig Subject und ConcreteSubject
-   */
   public void timePasses() {
     WeatherType[] enumValues = WeatherType.values();
     currentWeather = enumValues[(currentWeather.ordinal() + 1) % enumValues.length];
     LOGGER.info("The weather changed to {}.", currentWeather);
-    notifyObservers();
+    notifyObservers(this);
   }
 
-  /**
-   * Variante "1": Subject selber ruft notify auf
-   * + Clients {@link App} müssen nicht daran denken
-   * - Jenachdem Kette von updates
-   */
-  private void notifyObservers() {
-    for (WeatherObserver obs : observers) {
-      obs.update(currentWeather);
-    }
+  public WeatherType getCurrentWeather() {
+    return currentWeather;
   }
 }

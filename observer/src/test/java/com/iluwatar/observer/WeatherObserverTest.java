@@ -36,7 +36,7 @@ import org.junit.Test;
  * @param <O> Type of WeatherObserver
  * @author Jeroen Meulemeester
  */
-public abstract class WeatherObserverTest<O extends WeatherObserver> {
+public abstract class WeatherObserverTest<O extends ConditionObserver> {
 
   private InMemoryAppender appender;
 
@@ -58,7 +58,7 @@ public abstract class WeatherObserverTest<O extends WeatherObserver> {
   /**
    * The weather type currently tested
    */
-  private final WeatherType weather;
+  private final Weather weather;
 
   /**
    * The expected response from the observer
@@ -72,7 +72,7 @@ public abstract class WeatherObserverTest<O extends WeatherObserver> {
    * @param response The expected response from the observer
    * @param factory  The factory, used to create an instance of the tested observer
    */
-  WeatherObserverTest(final WeatherType weather, final String response, final Supplier<O> factory) {
+  WeatherObserverTest(final Weather weather, final String response, final Supplier<O> factory) {
     this.weather = weather;
     this.response = response;
     this.factory = factory;

@@ -55,12 +55,12 @@ public class WeatherTest {
   }
 
   /**
-   * Add a {@link WeatherObserver}, verify if it gets notified of a weather change, remove the
+   * Add a {@link ConditionObserver}, verify if it gets notified of a weather change, remove the
    * observer again and verify that there are no more notifications.
    */
   @Test
   public void testAddRemoveObserver() {
-    final WeatherObserver observer = mock(WeatherObserver.class);
+    final ConditionObserver observer = mock(ConditionObserver.class);
 
     final Weather weather = new Weather();
     weather.addObserver(observer);
@@ -68,7 +68,7 @@ public class WeatherTest {
 
     weather.timePasses();
     assertEquals("The weather changed to rainy.", appender.getLastMessage());
-    verify(observer).update(WeatherType.RAINY);
+    verify(observer).update(weather);
 
     weather.removeObserver(observer);
     weather.timePasses();
@@ -83,7 +83,7 @@ public class WeatherTest {
    */
   @Test
   public void testTimePasses() {
-    final WeatherObserver observer = mock(WeatherObserver.class);
+    final ConditionObserver observer = mock(ConditionObserver.class);
     final Weather weather = new Weather();
     weather.addObserver(observer);
 
@@ -91,7 +91,7 @@ public class WeatherTest {
     final WeatherType[] weatherTypes = WeatherType.values();
     for (int i = 1; i < 20; i++) {
       weather.timePasses();
-      inOrder.verify(observer).update(weatherTypes[i % weatherTypes.length]);
+      inOrder.verify(observer).update(weather);
     }
 
     verifyNoMoreInteractions(observer);

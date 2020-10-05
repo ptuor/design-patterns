@@ -50,12 +50,20 @@ public class App {
   public static void main(String[] args) {
 
     Weather weather = new Weather();
-    weather.addObserver(new Orcs());
-    weather.addObserver(new Hobbits());
+    Orcs orcs = new Orcs();
+    Hobbits hobbits = new Hobbits();
+    weather.addObserver(orcs);
+    weather.addObserver(hobbits);
+
+    Landscape landscape = new Landscape();
+    landscape.addObserver(orcs);
+    landscape.addObserver(hobbits);
 
     weather.timePasses();
+    landscape.walking();
     weather.timePasses();
     weather.timePasses();
     weather.timePasses();
+    landscape.walking();
   }
 }

@@ -28,26 +28,47 @@ import org.slf4j.LoggerFactory;
 /**
  * 
  * Hobbits
+ * Dient als ConcreteObserver und somit als Subklasse von {@link ConditionObserver}
  *
  */
-public class Hobbits implements WeatherObserver {
+public class Hobbits extends ConditionObserver {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(Hobbits.class);
 
   @Override
-  public void update(WeatherType currentWeather) {
-    switch (currentWeather) {
-      case COLD:
-        LOGGER.info("The hobbits are shivering in the cold weather.");
+  void handleWeatherChange(Weather currentWeather) {
+    switch (currentWeather.getCurrentWeather()) {
+        case COLD:
+          LOGGER.info("The hobbits are shivering in the cold weather.");
+          break;
+        case RAINY:
+          LOGGER.info("The hobbits look for cover from the rain.");
+          break;
+        case SUNNY:
+          LOGGER.info("The happy hobbits bade in the warm sun.");
+          break;
+        case WINDY:
+          LOGGER.info("The hobbits hold their hats tightly in the windy weather.");
+          break;
+        default:
+          break;
+      }
+  }
+
+  @Override
+  void handleLandscapeChange(Landscape currentLandscape) {
+    switch (currentLandscape.getCurrentLandScape()) {
+      case HILLS:
+        LOGGER.info("The hobbits feel like home and enjoy.");
         break;
-      case RAINY:
-        LOGGER.info("The hobbits look for cover from the rain.");
+      case MOUNTAINS:
+        LOGGER.info("The hobbits can handle mountains not like dwarfs but quite well.");
         break;
-      case SUNNY:
-        LOGGER.info("The happy hobbits bade in the warm sun.");
+      case SWAMP:
+        LOGGER.info("The hobbits have problems as they might sink in.");
         break;
-      case WINDY:
-        LOGGER.info("The hobbits hold their hats tightly in the windy weather.");
+      case LAKE:
+        LOGGER.info("The hobbits do not like travelling by boat");
         break;
       default:
         break;

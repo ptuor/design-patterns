@@ -25,10 +25,20 @@ package com.iluwatar.observer;
 /**
  * 
  * Observer interface.
+ *
+ * Hat eigene Implementation der update-Methode. Diese könnte aber auch in Subklassen (ConcreteObserver) implementiert werden
  * 
  */
-public interface WeatherObserver {
+public abstract class ConditionObserver {
 
-  void update(WeatherType currentWeather);
+  abstract void handleWeatherChange(Weather currentWeather);
+  abstract void handleLandscapeChange(Landscape currentLandscape);
 
+  public void update(Condition currentCondition) {
+    if(currentCondition instanceof Weather) {
+      handleWeatherChange((Weather) currentCondition);
+    } else if(currentCondition instanceof Landscape){
+      handleLandscapeChange((Landscape) currentCondition);
+    }
+  }
 }

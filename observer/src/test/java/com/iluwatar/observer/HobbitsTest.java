@@ -53,7 +53,7 @@ public class HobbitsTest extends WeatherObserverTest<Hobbits> {
    * @param weather  The weather that should be unleashed on the observer
    * @param response The expected response from the observer
    */
-  public HobbitsTest(final WeatherType weather, final String response) {
+  public HobbitsTest(final Weather weather, final String response) {
     super(weather, response, Hobbits::new);
   }
 

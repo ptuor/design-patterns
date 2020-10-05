@@ -29,14 +29,15 @@ import org.slf4j.LoggerFactory;
  * 
  * Orcs
  *
+ * Dient als ConcreteObserver und somit als Subklasse von {@link ConditionObserver}
  */
-public class Orcs implements WeatherObserver {
+public class Orcs extends ConditionObserver {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(Orcs.class);
 
   @Override
-  public void update(WeatherType currentWeather) {
-    switch (currentWeather) {
+  public void handleWeatherChange(Weather currentWeather) {
+    switch (currentWeather.getCurrentWeather()) {
       case COLD:
         LOGGER.info("The orcs are freezing cold.");
         break;
@@ -51,6 +52,35 @@ public class Orcs implements WeatherObserver {
         break;
       default:
         break;
+    }
+  }
+
+  @Override
+  void handleLandscapeChange(Landscape currentLandscape) {
+    switch (currentLandscape.getCurrentLandScape()) {
+      case HILLS:
+        LOGGER.info("The orcs can run fast.");
+        break;
+      case MOUNTAINS:
+        LOGGER.info("The orcs are used to live in the mountains");
+        break;
+      case SWAMP:
+        LOGGER.info("Orcs like the swamp");
+        break;
+      case LAKE:
+        LOGGER.info("Orcs are scared of water");
+        break;
+      default:
+        break;
+    }
+  }
+
+  @Override
+  public void update(Condition currentCondition) {
+    if(currentCondition instanceof Weather) {
+      handleWeatherChange((Weather) currentCondition);
+    } else if(currentCondition instanceof Landscape){
+      handleLandscapeChange((Landscape) currentCondition);
     }
   }
 }
