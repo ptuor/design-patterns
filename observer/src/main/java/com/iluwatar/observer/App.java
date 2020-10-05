@@ -21,11 +21,12 @@
  * THE SOFTWARE.
  */
 package com.iluwatar.observer;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ *
  * The Observer pattern is a software design pattern in which an object, called the subject,
  * maintains a list of its dependents, called observers, and notifies them automatically of any
  * state changes, usually by calling one of their methods. It is mainly used to implement
@@ -35,7 +36,7 @@ import org.slf4j.LoggerFactory;
  * <p>
  * In this example {@link Weather} has a state that can be observed. The {@link Orcs} and
  * {@link Hobbits} register as observers and receive notifications when the {@link Weather} changes.
- * 
+ *
  */
 public class App {
 
@@ -43,39 +44,18 @@ public class App {
 
   /**
    * Program entry point
-   * 
+   *
    * @param args command line args
    */
   public static void main(String[] args) {
 
-    Orcs orcs = new Orcs();
-    Hobbits hobbits = new Hobbits();
-
     Weather weather = new Weather();
-    weather.addObserver(orcs);
-    weather.addObserver(hobbits);
-
-
-    /**
-     *  sobald das Subject {@link Weather} korrekt implementiert ist,
-     *  ist es nicht mehr nötig die update-Method von {@link Orcs} und {@link Hobbits} manuell aufzurufen
-     *  @todo: entferne die manuellen Aufrufe der update-Methode! => alle Tests müssen grün werden
-     */
+    weather.addObserver(new Orcs());
+    weather.addObserver(new Hobbits());
 
     weather.timePasses();
-    orcs.update(weather.getCurrentWeather());
-    hobbits.update(weather.getCurrentWeather());
-
     weather.timePasses();
-    orcs.update(weather.getCurrentWeather());
-    hobbits.update(weather.getCurrentWeather());
-
     weather.timePasses();
-    orcs.update(weather.getCurrentWeather());
-    hobbits.update(weather.getCurrentWeather());
-
     weather.timePasses();
-    orcs.update(weather.getCurrentWeather());
-    hobbits.update(weather.getCurrentWeather());
   }
 }
