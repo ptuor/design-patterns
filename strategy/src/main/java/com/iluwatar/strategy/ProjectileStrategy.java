@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
  * Projectile strategy.
  *
  */
-public class ProjectileStrategy implements DragonSlayingStrategy {
+public class ProjectileStrategy {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(ProjectileStrategy.class);
 
