@@ -107,9 +107,9 @@ public class DragonSlayingStrategyTest {
    */
   @Test
   public void testExecute() {
-//    this.strategy.execute();
-//    assertEquals(this.expectedResult, appender.getLastMessage());
-//    assertEquals(1, appender.getLogSize());
+    this.strategy.execute();
+    assertEquals(this.expectedResult, appender.getLastMessage());
+    assertEquals(1, appender.getLogSize());
   }
 
   private class InMemoryAppender extends AppenderBase<ILoggingEvent> {
