@@ -26,6 +26,10 @@ package com.iluwatar.factory.method;
  * @todo: diese Klasse soll ({@link ElfWeapon}) Objekte erzeugen,
  * implementiere dazu {@link Blacksmith}
  */
-public class ElfBlacksmith {
+public class ElfBlacksmith implements Blacksmith {
 
+    @Override
+    public Weapon manufactureWeapon(WeaponType weaponType) {
+        return new ElfWeapon(weaponType);
+    }
 }

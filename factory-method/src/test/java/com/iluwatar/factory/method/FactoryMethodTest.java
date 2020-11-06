@@ -47,9 +47,9 @@ public class FactoryMethodTest {
    */
   @Test
   public void testOrcBlacksmithWithSpear() {
-//    Blacksmith blacksmith = new OrcBlacksmith();
-//    Weapon weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
-//    verifyWeapon(weapon, WeaponType.SPEAR, OrcWeapon.class);
+    Blacksmith blacksmith = new OrcBlacksmith();
+    Weapon weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
+    verifyWeapon(weapon, WeaponType.SPEAR, OrcWeapon.class);
   }
 
   /**
@@ -58,9 +58,9 @@ public class FactoryMethodTest {
    */
   @Test
   public void testOrcBlacksmithWithAxe() {
-//    Blacksmith blacksmith = new OrcBlacksmith();
-//    Weapon weapon = blacksmith.manufactureWeapon(WeaponType.AXE);
-//    verifyWeapon(weapon, WeaponType.AXE, OrcWeapon.class);
+    Blacksmith blacksmith = new OrcBlacksmith();
+    Weapon weapon = blacksmith.manufactureWeapon(WeaponType.AXE);
+    verifyWeapon(weapon, WeaponType.AXE, OrcWeapon.class);
   }
 
   /**
@@ -69,9 +69,9 @@ public class FactoryMethodTest {
    */
   @Test
   public void testElfBlacksmithWithShortSword() {
-//    Blacksmith blacksmith = new ElfBlacksmith();
-//    Weapon weapon = blacksmith.manufactureWeapon(WeaponType.SHORT_SWORD);
-//    verifyWeapon(weapon, WeaponType.SHORT_SWORD, ElfWeapon.class);
+    Blacksmith blacksmith = new ElfBlacksmith();
+    Weapon weapon = blacksmith.manufactureWeapon(WeaponType.SHORT_SWORD);
+    verifyWeapon(weapon, WeaponType.SHORT_SWORD, ElfWeapon.class);
   }
 
   /**
@@ -80,9 +80,9 @@ public class FactoryMethodTest {
    */
   @Test
   public void testElfBlacksmithWithSpear() {
-//    Blacksmith blacksmith = new ElfBlacksmith();
-//    Weapon weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
-//    verifyWeapon(weapon, WeaponType.SPEAR, ElfWeapon.class);
+    Blacksmith blacksmith = new ElfBlacksmith();
+    Weapon weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
+    verifyWeapon(weapon, WeaponType.SPEAR, ElfWeapon.class);
   }
 
   /**

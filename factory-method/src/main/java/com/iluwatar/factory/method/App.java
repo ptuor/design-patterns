@@ -50,7 +50,7 @@ public class App {
      * - entferne "type" und nutze stattdessen das interface ({@link Blacksmith})
      * =>  private final Blacksmith blacksmith;
      */
-    private String type;
+    private final Blacksmith blacksmith;
 
     /**
      * Creates an instance of <code>App</code> which will use <code>blacksmith</code> to manufacture
@@ -63,8 +63,8 @@ public class App {
     /**
      * todo: nutze hier {@link Blacksmith}
      */
-    public App(String type) {
-        this.type = type;
+    public App(Blacksmith blacksmith) {
+        this.blacksmith = blacksmith;
     }
 
     /**
@@ -72,11 +72,11 @@ public class App {
      */
     public static void main(String[] args) {
         // Lets go to war with Orc weapons
-        App app = new App("Orc");
+        App app = new App(new OrcBlacksmith());
         app.manufactureWeapons();
 
         // Lets go to war with Elf weapons
-        app = new App("Elf");
+        app = new App(new ElfBlacksmith());
         app.manufactureWeapons();
     }
 
@@ -91,16 +91,11 @@ public class App {
     private void manufactureWeapons() {
         Weapon weapon;
 
-        if (type == "Orc") {
-            weapon = new OrcWeapon(WeaponType.SPEAR);
-            LOGGER.info(weapon.toString());
-            weapon = new OrcWeapon(WeaponType.AXE);
-            LOGGER.info(weapon.toString());
-        } else if (type == "Elf") {
-            weapon = new ElfWeapon(WeaponType.SPEAR);
-            LOGGER.info(weapon.toString());
-            weapon = new ElfWeapon(WeaponType.AXE);
-            LOGGER.info(weapon.toString());
-        }
+        weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
+        LOGGER.info(weapon.toString());
+
+        weapon = blacksmith.manufactureWeapon(WeaponType.AXE);
+        LOGGER.info(weapon.toString());
+
     }
 }
