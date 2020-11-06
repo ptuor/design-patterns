@@ -30,22 +30,19 @@ import org.slf4j.LoggerFactory;
  * SubtleMethod implementation of {@link StealingMethod}.
  *
  */
-public class SubtleMethod extends StealingMethod {
+public class SubtleMethod extends StealingMethod{
 
   private static final Logger LOGGER = LoggerFactory.getLogger(SubtleMethod.class);
 
-  @Override
-  protected String pickTarget() {
+  String chooseTarget() {
     return "shop keeper";
   }
 
-  @Override
-  protected void confuseTarget(String target) {
+  void confuseTarget(String target) {
     LOGGER.info("Approach the {} with tears running and hug him!", target);
   }
 
-  @Override
-  protected void stealTheItem(String target) {
+  void stealIt(String target) {
     LOGGER.info("While in close contact grab the {}'s wallet.", target);
   }
 }
