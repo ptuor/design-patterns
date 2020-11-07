@@ -63,7 +63,7 @@ public class AdapterPatternTest {
 
   @Test
   public void testObjectAdapter() {
-   /* BattleFishingBoat battleFishingBoat = spy(new BattleFishingBoat());
+    BattleFishingBoat battleFishingBoat = spy(new BattleFishingBoat());
     beans.put(BATTLESHIP_BEAN, battleFishingBoat);
 
     Captain captain = new Captain();
@@ -79,13 +79,13 @@ public class AdapterPatternTest {
 
     // same with above with firing
     captain.fire();
-    verify(battleship).fire();*/
+    verify(battleship).fire();
 
   }
 
   @Test
   public void testClassAdapter() {
-   /* RealBattleFishingBoat realBattleFishingBoat = spy(new RealBattleFishingBoat());
+    RealBattleFishingBoat realBattleFishingBoat = spy(new RealBattleFishingBoat());
     beans.put(BATTLESHIP_BEAN, realBattleFishingBoat);
 
     Captain captain = new Captain();
@@ -101,7 +101,7 @@ public class AdapterPatternTest {
 
     // same with above with firing
     captain.fire();
-    verify(battleship).fire();*/
+    verify(battleship).fire();
 
   }
 }
