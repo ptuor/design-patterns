@@ -51,7 +51,7 @@ public class App {
     LetterComposite orcMessage = new Messenger().messageFromOrcs();
     orcMessage.print();
 
-    LOGGER.info("\n");
+    System.out.println("\n");
 
     LOGGER.info("Message from the elves: ");
 
