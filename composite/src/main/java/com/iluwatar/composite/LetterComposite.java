@@ -46,7 +46,11 @@ public abstract class LetterComposite {
   }
 
   public LetterComposite getChild(int index) {
-    return letterComposites.get(index);
+    if ((letterComposites.size() + 1) >= index){
+     return letterComposites.get(index);
+    }else {
+      return null;
+    }
   }
 
   public int count() {
