@@ -6,4 +6,10 @@ public class LP extends Vinyl {
         super(config);
 
     }
+
+    @Override
+    public String getTypeAndName() {
+        String typeAndName = "LP: " + this.getName();
+        return typeAndName;
+    }
 }

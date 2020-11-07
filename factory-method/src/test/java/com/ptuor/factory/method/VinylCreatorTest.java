@@ -37,6 +37,39 @@ public class VinylCreatorTest {
         Assert.assertFalse(lp instanceof EP);
     }
 
+
+    @Test
+    public void createEP_getTypeAndName_returnsCorrectTypeAndName() {
+        Config config = new Config("EP", "Joseph", "Looptroop");
+        Vinyl vinyl = VinylCreator.create(config);
+
+        String typeAndName = vinyl.getTypeAndName();
+
+        Assert.assertEquals("EP: Joseph", typeAndName);
+    }
+
+
+    @Test
+    public void createLP_getTypeAndName_returnsCorrectTypeAndName() {
+        Config config = new Config("LP", "Professional Dreamers", "Looptroop");
+        Vinyl vinyl = VinylCreator.create(config);
+
+        String typeAndName = vinyl.getTypeAndName();
+
+        Assert.assertEquals("LP: Professional Dreamers", typeAndName);
+    }
+
+
+    @Test
+    public void createVinyl_getArtis_returnsCorrectArtist() {
+        Config config = new Config("LP", "Professional Dreamers", "Looptroop");
+        Vinyl vinyl = VinylCreator.create(config);
+
+        String artist = vinyl.getArtist();
+
+        Assert.assertEquals("Looptroop", artist);
+    }
+
     @Test
     public void createInvalidVinyl_ThrowsError() {
         Config config = new Config("", "Professional Dreamers", "Looptroop");
@@ -47,11 +80,7 @@ public class VinylCreatorTest {
         }catch (Error e){
             isErrorThrown = true;
         }
-
         Assert.assertTrue(isErrorThrown);
-
     }
-
-
 
 }

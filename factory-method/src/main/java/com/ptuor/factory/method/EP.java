@@ -6,4 +6,10 @@ public class EP extends Vinyl {
         super(config);
     }
 
+    @Override
+    public String getTypeAndName() {
+        String typeAndName = "EP: " + this.getName();
+        return typeAndName;
+    }
+
 }
