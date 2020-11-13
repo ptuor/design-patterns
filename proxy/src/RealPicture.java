@@ -13,6 +13,13 @@ public class RealPicture implements Picture {
     }
 
     private void loadFromServer(String fileName) {
+        download();
+    }
+
+    // primitively simulated download
+    private void download() {
+        loading = true;
+
         System.out.println("Loading " + fileName);
 
         // Simulates download
@@ -20,7 +27,7 @@ public class RealPicture implements Picture {
             try {
                 Thread.sleep(5000);
                 loading = false;
-                System.out.println("loading complete");
+                System.out.println(" loading complete");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -28,7 +35,13 @@ public class RealPicture implements Picture {
 
         thread.start();
         while (loading) {
-            System.out.println("loading in progress...");
+            try {
+                System.out.print(".");
+                Thread.sleep(500);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
