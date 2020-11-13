@@ -1,3 +1,8 @@
+package first;
+
+import second.Picture;
+import second.ProxyPicture;
+
 public class App {
     public static void main(String[] args) {
         Picture image = new ProxyPicture("largePicture.jpg");

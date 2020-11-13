@@ -1,8 +1,10 @@
+package second;
+
 public class RealPicture implements Picture {
     private String fileName;
     private volatile boolean loading = true;
 
-    public RealPicture(String fileName) {
+    protected RealPicture(String fileName) {
         this.fileName = fileName;
         loadFromServer(fileName);
     }

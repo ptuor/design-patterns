@@ -1,3 +1,5 @@
+package second;
+
 public class ProxyPicture implements Picture {
     private RealPicture realImage;
     private String fileName;
