@@ -69,11 +69,11 @@ public class App {
     doubleClubbed.fleeBattle();
     LOGGER.info("Clubbed troll power {}.\n", doubleClubbed.getAttackPower());
 
-    LOGGER.info("A troll with a huge club and an arch surprises you.");
-    /*
-       2.) @todo: instanziiere einen 'clubbedArcherTroll' der eine Keule schwingt und einen Bogen hat.
-        Hinweis: Erstelle dazu einen neuen ConcreteDecorator 'ArchTroll'
-     */
 
+    LOGGER.info("A troll with a huge club and an arch surprises you.");
+    Troll clubbedArcherTroll = new ArchTroll(new ClubbedTroll(troll));
+    clubbedArcherTroll.attack();
+    clubbedArcherTroll.fleeBattle();
+    LOGGER.info("Clubbed troll power {}.\n", clubbedArcherTroll.getAttackPower());
   }
 }
