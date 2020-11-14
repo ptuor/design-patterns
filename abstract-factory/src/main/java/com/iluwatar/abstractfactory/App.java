@@ -57,20 +57,12 @@ public class App {
     setArmy(factory.createArmy());
   }
 
-  King getKing(final KingdomFactory factory) {
-    return factory.createKing();
-  }
-
   public King getKing() {
     return king;
   }
 
   private void setKing(final King king) {
     this.king = king;
-  }
-  
-  Castle getCastle(final KingdomFactory factory) {
-    return factory.createCastle();
   }
 
   public Castle getCastle() {
@@ -79,10 +71,6 @@ public class App {
 
   private void setCastle(final Castle castle) {
     this.castle = castle;
-  }
-  
-  Army getArmy(final KingdomFactory factory) {
-    return factory.createArmy();
   }
 
   public Army getArmy() {
@@ -104,13 +92,13 @@ public class App {
     App app = new App();
 
     LOGGER.info("Elf Kingdom");
-    app.createKingdom(new ElfKingdomFactory());
+    app.createKingdom(FactoryProducer.createFactory(Kingdom.ELF));
     LOGGER.info(app.getArmy().getDescription());
     LOGGER.info(app.getCastle().getDescription());
     LOGGER.info(app.getKing().getDescription());
 
     LOGGER.info("Orc Kingdom");
-    app.createKingdom(new OrcKingdomFactory());
+    app.createKingdom(FactoryProducer.createFactory(Kingdom.ORC));
     LOGGER.info(app.getArmy().getDescription());
     LOGGER.info(app.getCastle().getDescription());
     LOGGER.info(app.getKing().getDescription());

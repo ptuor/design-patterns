@@ -34,48 +34,11 @@ import org.junit.Test;
 public class AbstractFactoryTest {
 
   private App app = new App();
-  private KingdomFactory elfFactory;
-  private KingdomFactory orcFactory;
 
-  @Before
-  public void setUp() {
-    elfFactory = new ElfKingdomFactory();
-    orcFactory = new OrcKingdomFactory();
-  }
-
-  @Test
-  public void king() {
-    final King elfKing = app.getKing(elfFactory);
-    assertTrue(elfKing instanceof ElfKing);
-    assertEquals(ElfKing.DESCRIPTION, elfKing.getDescription());
-    final King orcKing = app.getKing(orcFactory);
-    assertTrue(orcKing instanceof OrcKing);
-    assertEquals(OrcKing.DESCRIPTION, orcKing.getDescription());
-  }
-
-  @Test
-  public void castle() {
-    final Castle elfCastle = app.getCastle(elfFactory);
-    assertTrue(elfCastle instanceof ElfCastle);
-    assertEquals(ElfCastle.DESCRIPTION, elfCastle.getDescription());
-    final Castle orcCastle = app.getCastle(orcFactory);
-    assertTrue(orcCastle instanceof OrcCastle);
-    assertEquals(OrcCastle.DESCRIPTION, orcCastle.getDescription());
-  }
-
-  @Test
-  public void army() {
-    final Army elfArmy = app.getArmy(elfFactory);
-    assertTrue(elfArmy instanceof ElfArmy);
-    assertEquals(ElfArmy.DESCRIPTION, elfArmy.getDescription());
-    final Army orcArmy = app.getArmy(orcFactory);
-    assertTrue(orcArmy instanceof OrcArmy);
-    assertEquals(OrcArmy.DESCRIPTION, orcArmy.getDescription());
-  }
 
   @Test
   public void createElfKingdom() {
-    app.createKingdom(elfFactory);
+    app.createKingdom(FactoryProducer.createFactory(Kingdom.ELF));
     final King king = app.getKing();
     final Castle castle = app.getCastle();
     final Army army = app.getArmy();
@@ -89,7 +52,7 @@ public class AbstractFactoryTest {
 
   @Test
   public void createOrcKingdom() {
-    app.createKingdom(orcFactory);
+    app.createKingdom(FactoryProducer.createFactory(Kingdom.ORC));
     final King king = app.getKing();
     final Castle castle = app.getCastle();
     final Army army = app.getArmy();
