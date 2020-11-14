@@ -64,7 +64,10 @@ public class App {
 
 
     LOGGER.info("A troll with two huge clubs surprises you.");
-    // 1.) @todo: instanziiere einen 'doubleClubbed' troll der 2 Keulen schwingt.
+    Troll doubleClubbed = new ClubbedTroll(clubbed);
+    doubleClubbed.attack();
+    doubleClubbed.fleeBattle();
+    LOGGER.info("Clubbed troll power {}.\n", doubleClubbed.getAttackPower());
 
     LOGGER.info("A troll with a huge club and an arch surprises you.");
     /*
