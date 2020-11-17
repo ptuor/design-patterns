@@ -1,7 +1,7 @@
 public class Post {
     private String title;
     private String author;
-    private String datePosed;
+    private String datePosted;
     private int numberOfWords;
     private int numberOfCharacters;
     public Post(String title, String author) {
@@ -16,7 +16,7 @@ public class Post {
     public Post(String title, String author, String datePosted, int numberOfWords, int numberOfCharacters) {
         this.title = title;
         this.author = author;
-        this.datePosed = datePosted;
+        this.datePosted = datePosted;
         this.numberOfWords = numberOfWords;
         this.numberOfCharacters = numberOfCharacters;
     }
@@ -26,7 +26,7 @@ public class Post {
         return "Post{" +
                 "title='" + title + '\'' +
                 ", author='" + author + '\'' +
-                ", datePosed='" + datePosed + '\'' +
+                ", datePosted='" + datePosted + '\'' +
                 ", numberOfWords=" + numberOfWords +
                 ", numberOfCharacters=" + numberOfCharacters +
                 '}';
