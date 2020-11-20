@@ -36,10 +36,10 @@ public class DragonSlayer {
   }
 
   public void changeStrategy(DragonSlayingStrategy strategy) {
-    // @todo: implement
+    this.strategy = strategy;
   }
 
   public void goToBattle() {
-    // @todo: implement
+    strategy.execute();
   }
 }

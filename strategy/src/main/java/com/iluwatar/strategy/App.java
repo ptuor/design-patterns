@@ -42,22 +42,20 @@ public class App {
    * Program entry point
    * 
    * @param args command line args
-   *
-   * @todo: nutze hier das Strategy Pattern, sodass die drei Strategien
-   * {@link MeleeStrategy}, {@link ProjectileStrategy} und {@link SpellStrategy}
-   * via Context {@link DragonSlayer}) verwendet werden können
    */
   public static void main(String[] args) {
+    DragonSlayer dragonSlayer;
+
     LOGGER.info("Green dragon spotted ahead!");
-    MeleeStrategy meleeStrategy = new MeleeStrategy();
-    meleeStrategy.execute();
+    dragonSlayer = new DragonSlayer(new MeleeStrategy());
+    dragonSlayer.goToBattle();
 
     LOGGER.info("Red dragon emerges.");
-    ProjectileStrategy projectileStrategy = new ProjectileStrategy();
-    projectileStrategy.execute();
+    dragonSlayer.changeStrategy(new ProjectileStrategy());
+    dragonSlayer.goToBattle();
 
     LOGGER.info("Black dragon lands before you.");
-    SpellStrategy spellStrategy = new SpellStrategy();
-    spellStrategy.execute();
+    dragonSlayer.changeStrategy(new SpellStrategy());
+    dragonSlayer.goToBattle();
   }
 }
