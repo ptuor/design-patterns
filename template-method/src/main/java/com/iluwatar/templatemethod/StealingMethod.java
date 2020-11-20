@@ -34,6 +34,14 @@ public abstract class StealingMethod {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(StealingMethod.class);
 
+  protected abstract String chooseTarget();
+  protected abstract void confuseTarget(String target);
+  protected abstract void stealTheItem(String target);
 
-  //todo: ergänze den Code um die template method "steal"
+  public void steal(){
+    String target = chooseTarget();
+    LOGGER.info("The target has been chosen as {}.", target);
+    confuseTarget(target);
+    stealTheItem(target);
+  }
 }

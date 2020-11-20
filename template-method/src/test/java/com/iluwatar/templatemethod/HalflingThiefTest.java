@@ -40,13 +40,13 @@ public class HalflingThiefTest {
    */
   @Test
   public void testSteal() {
-//    final StealingMethod method = mock(StealingMethod.class);
-//    final HalflingThief thief = new HalflingThief(method);
-//
-//    thief.steal();
-//    verify(method).steal();
-//
-//    verifyNoMoreInteractions(method);
+    final StealingMethod method = mock(StealingMethod.class);
+    final HalflingThief thief = new HalflingThief(method);
+
+    thief.steal();
+    verify(method).steal();
+
+    verifyNoMoreInteractions(method);
   }
 
   /**
@@ -54,19 +54,19 @@ public class HalflingThiefTest {
    */
   @Test
   public void testChangeMethod() {
-//    final StealingMethod initialMethod = mock(StealingMethod.class);
-//    final HalflingThief thief = new HalflingThief(initialMethod);
-//
-//    thief.steal();
-//    verify(initialMethod).steal();
-//
-//    final StealingMethod newMethod = mock(StealingMethod.class);
-//    thief.changeMethod(newMethod);
-//
-//    thief.steal();
-//    verify(newMethod).steal();
-//
-//    verifyNoMoreInteractions(initialMethod, newMethod);
+    final StealingMethod initialMethod = mock(StealingMethod.class);
+    final HalflingThief thief = new HalflingThief(initialMethod);
+
+    thief.steal();
+    verify(initialMethod).steal();
+
+    final StealingMethod newMethod = mock(StealingMethod.class);
+    thief.changeMethod(newMethod);
+
+    thief.steal();
+    verify(newMethod).steal();
+
+    verifyNoMoreInteractions(initialMethod, newMethod);
 
   }
 }

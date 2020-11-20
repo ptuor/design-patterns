@@ -113,9 +113,9 @@ public abstract class StealingMethodTest<M extends StealingMethod> {
   public void testConfuseTarget() {
     assertEquals(0, appender.getLogSize());
 
-//    this.method.confuseTarget(this.expectedTarget);
-//    assertEquals(this.expectedConfuseMethod, appender.getLastMessage());
-//    assertEquals(1, appender.getLogSize());
+    this.method.confuseTarget(this.expectedTarget);
+    assertEquals(this.expectedConfuseMethod, appender.getLastMessage());
+    assertEquals(1, appender.getLogSize());
   }
 
   /**
@@ -123,11 +123,11 @@ public abstract class StealingMethodTest<M extends StealingMethod> {
    */
   @Test
   public void testStealTheItem() {
-//    assertEquals(0, appender.getLogSize());
-//
-//    this.method.stealTheItem(this.expectedTarget);
-//    assertEquals(this.expectedStealMethod, appender.getLastMessage());
-//    assertEquals(1, appender.getLogSize());
+    assertEquals(0, appender.getLogSize());
+
+    this.method.stealTheItem(this.expectedTarget);
+    assertEquals(this.expectedStealMethod, appender.getLastMessage());
+    assertEquals(1, appender.getLogSize());
   }
 
   /**
@@ -135,12 +135,12 @@ public abstract class StealingMethodTest<M extends StealingMethod> {
    */
   @Test
   public void testSteal() {
-//    this.method.steal();
-//
-//    assertTrue(appender.logContains(this.expectedTargetResult));
-//    assertTrue(appender.logContains(this.expectedConfuseMethod));
-//    assertTrue(appender.logContains(this.expectedStealMethod));
-//    assertEquals(3, appender.getLogSize());
+    this.method.steal();
+
+    assertTrue(appender.logContains(this.expectedTargetResult));
+    assertTrue(appender.logContains(this.expectedConfuseMethod));
+    assertTrue(appender.logContains(this.expectedStealMethod));
+    assertEquals(3, appender.getLogSize());
   }
 
   private class InMemoryAppender extends AppenderBase<ILoggingEvent> {

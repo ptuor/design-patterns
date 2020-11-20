@@ -34,15 +34,19 @@ public class HitAndRunMethod extends StealingMethod {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(HitAndRunMethod.class);
 
-  String pickTarget() {
+
+  @Override
+  protected String chooseTarget() {
     return "old goblin woman";
   }
 
-  void confuseTarget(String target) {
+  @Override
+  protected void confuseTarget(String target) {
     LOGGER.info("Approach the {} from behind.", target);
   }
 
-  void stealTheItem(String target) {
+  @Override
+  protected void stealTheItem(String target) {
     LOGGER.info("Grab the handbag and run away fast!");
   }
 }
